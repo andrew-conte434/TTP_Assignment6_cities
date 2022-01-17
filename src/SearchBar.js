@@ -3,7 +3,7 @@ import {useState} from 'react'
 import ZipCodeData from "./ZipCodeData";
 
 export default function SearchBar(){
-    const urlPath = "http://ctp-zip-api.herokuapp.com/city/"
+    const urlPath = "https://ctp-zip-api.herokuapp.com/city/"
     const [city, setCity] = useState("")
     const [zipCodes, setZipCodes] = useState([])
     const [header, setHeader] = useState(``)
