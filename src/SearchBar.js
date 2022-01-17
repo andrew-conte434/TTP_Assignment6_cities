@@ -3,7 +3,7 @@ import {useState} from 'react'
 import ZipCodeData from "./ZipCodeData";
 
 export default function SearchBar(){
-    const urlPath = "http://ctp-zip-api.herokuapp.com/city/"
+    const urlPath = "https://ctp-zip-api.herokuapp.com/city/"
     const [city, setCity] = useState("")
     const [zipCodes, setZipCodes] = useState([])
     const [header, setHeader] = useState(``)
@@ -21,18 +21,22 @@ export default function SearchBar(){
                 })
                 .catch(err => {
                     console.log("Please enter a valid city name")
+                    setHeader("Please enter a valid city name")
                     setZipCodes([])
                 })
         }
     }
     return (
         <div className={"App"}>
-            <label htmlFor={"city"}>City: </label>
-            <input type={"text"}
-                   name={"city"}
-                   onChange={(e) =>
-                       setCity(e.target.value)}
-                   onKeyDown={handleEnter}/>
+            <header className='header'>
+                <h1>City Search</h1>
+                <label htmlFor={"city"}>Search for zip codes in: </label>
+                <input type={"text"}
+                    name={"city"}
+                    onChange={(e) =>
+                        setCity(e.target.value)}
+                    onKeyDown={handleEnter}/>
+            </header>
             <div className={"zip-codes"}>
                 <h3>{header}</h3>
                 <ul>
